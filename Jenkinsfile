@@ -5,7 +5,14 @@ pipeline {
     stages{
         stage('Build') {
             steps {
-                sh "mvn clean install"
+                sh "mvn clean install -Pcoverage"
+            }
+        }
+        stage('Code Coverage') {
+            steps {
+                script {
+                    step([$class: 'JacocoPublisher', execPattern: '**/target/coverage-reports/jacoco*.exec'])
+                }
             }
         }
     }
