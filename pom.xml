@@ -10,6 +10,9 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <jacoco-maven-plugin.version>0.7.9</jacoco-maven-plugin.version>
+        <sonar.jacoco.reportMissing.force.zero>true</sonar.jacoco.reportMissing.force.zero>
+        <sonar.host.url>https://i.ci.build.ge.com/janitha-jayaweera-ge-com/derm_sonarqube</sonar.host.url>
+        <sonar.scm.provider>git</sonar.scm.provider>
     </properties>
     <parent>
         <groupId>org.springframework.boot</groupId>
