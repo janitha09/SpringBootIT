@@ -12,6 +12,7 @@
         <jacoco-maven-plugin.version>0.7.9</jacoco-maven-plugin.version>
         <sonar.jacoco.reportMissing.force.zero>true</sonar.jacoco.reportMissing.force.zero>
         <sonar.host.url>https://i.ci.build.ge.com/janitha-jayaweera-ge-com/derm_sonarqube</sonar.host.url>
+        <sonar.jacoco.reportPaths>target/coverage-reports/jacoco-ut.exec,target/coverage-reports/jacoco-it.exec</sonar.jacoco.reportPaths>
         <sonar.scm.provider>git</sonar.scm.provider>
     </properties>
     <parent>

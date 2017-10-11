@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Sonar') {
             steps {
-                sh "mvn sonar:sonar -Dsonar.host.url=https://i.ci.build.ge.com/janitha-jayaweera-ge-com/derm_sonarqube -Pcoverage"
+                sh "mvn sonar:sonar -Dsonar.host.url=https://i.ci.build.ge.com/janitha-jayaweera-ge-com/derm_sonarqube -Dsonar.jacoco.reportPaths=target/coverage-reports/jacoco-ut.exec,target/coverage-reports/jacoco-it.exec -Pcoverage"
             }
         }
     }
