@@ -16,7 +16,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.net.URL;
 import static org.hamcrest.Matchers.equalTo;
 import org.junit.Before;
+import org.junit.experimental.categories.Category;
 import org.springframework.http.ResponseEntity;
+
 /**
  *
  * @author 212486104
@@ -24,23 +26,38 @@ import org.springframework.http.ResponseEntity;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class HelloControllerITs {
+
     @LocalServerPort
     private int port;
-    
+
     private URL base;
-    
+
     @Autowired
     private TestRestTemplate template;
-    
+
     @Before
-    public void setUp() throws Exception{
-        this.base = new URL ("http://localhost:" + port + "/");
+    public void setUp() throws Exception {
+        this.base = new URL("http://localhost:" + port + "/");
     }
-    
+
     @Test
-    public void getHello() throws Exception{
-        ResponseEntity<String> response =template.getForEntity(base.toString(), String.class);
-        assertThat(response.getBody(),equalTo("Greetings from Spring Boot!"));
+    public void getHelloIT() throws Exception {
+        ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
+        assertThat(response.getBody(), equalTo("Greetings from Spring Boot!"));
     }
-    
+
+    @Test
+    @Category(com.mycompany.springhello.SlowTest.class)
+    public void getSlowHello() throws Exception {
+        ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
+        assertThat(response.getBody(), equalTo("Greetings from Spring Boot!"));
+    }
+
+    @Test
+    @Category(com.mycompany.springhello.SlowerTest.class)
+    public void getSlowerHello() throws Exception {
+        ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
+        assertThat(response.getBody(), equalTo("Greetings from Spring Boot!"));
+    }
+
 }
